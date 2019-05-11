@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IonItem } from '@ionic/angular';
-import { Bicycle } from '../../bicycle';
+import { Bicycle } from '../../model/bicycle';
 
 @Component({
   selector: 'app-bicycle-item',
