@@ -9,4 +9,6 @@ npm install -g ionic
 
 # Start app
 
+```
 ionic serve
+```
