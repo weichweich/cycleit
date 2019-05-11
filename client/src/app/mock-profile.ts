@@ -1,4 +1,4 @@
-import { Profile } from './profile';
+import { Profile } from './model/profile';
 
 export const HansPeterProfile: Profile = {
     id: 1,

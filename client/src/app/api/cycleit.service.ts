@@ -26,7 +26,7 @@ class  Manufacturers {
 })
 export class CycleitService {
 
-  baseUrl:string = "http://localhost:8000";
+  baseUrl:string = "http://localhost:8100/api";
 
   constructor(private  httpClient : HttpClient) { 
 
