@@ -1,7 +1,7 @@
 export class Bicycle {
     id: number;
     modelName: String;
-    modelDate: Date;
+    modelYear: Date;
     modelManufacturer: String;
     frameName: String;
     wheelName: String;
