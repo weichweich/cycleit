@@ -10,7 +10,17 @@ pipenv shell
 
 # Start Server
 
+
+## If model was changed
+
+```
+python manage.py makemigrations cycleit
+python manage.py migrate
+```
+
+
 local development server
+
 ```
 cd server
 python manage.py runserver
