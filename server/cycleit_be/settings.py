@@ -25,12 +25,14 @@ SECRET_KEY = 'd3olchv%u-z7k8-mh)zzn@2n@^&bot!@h30m&ac2#k$uc+uouk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.172.203", "192.168.172.225", "192.168.172.237"]
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.172.203", "192.168.172.225", "192.168.172.237"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
+    'cycleit.apps.CycleitConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
