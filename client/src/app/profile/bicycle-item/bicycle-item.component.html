@@ -1,6 +1,7 @@
 <ion-grid>
   <ion-row>
     <ion-col>
+      
       <ion-item>
         <ion-icon slot="start" color="medium" name="bicycle"></ion-icon>
         <ion-label>{{bicycle.modelName}}</ion-label>
@@ -11,25 +12,55 @@
 
   <ion-row>
     <ion-col>
-      <ion-item> {{bicycle.modelManufacturer}} </ion-item>
+        <ion-item>
+            <ion-avatar>
+              <img src="../../../assets/img/frame.png">
+            </ion-avatar>
+        </ion-item>
+        <ion-item> {{bicycle.frameName}} </ion-item>
     </ion-col>
     <ion-col>
-      <ion-item> {{bicycle.modelName}} </ion-item>
+        <ion-item>
+            <ion-avatar>
+              <img src="../../../assets/img/chain.png">
+            </ion-avatar>
+        </ion-item>
+        <ion-item> chain </ion-item>
     </ion-col>
-    <ion-col>
-      <ion-item> {{bicycle.modelDate.getFullYear()}} </ion-item>
+    <ion-col>   
+        <ion-item>
+            <ion-avatar>
+              <img src="../../../assets/img/wheels.png">
+            </ion-avatar>
+        </ion-item>
+        <ion-item> {{bicycle.wheelName}} </ion-item>
     </ion-col>
   </ion-row>
 
   <ion-row>
     <ion-col>
-      <ion-item> {{bicycle.frameName}} </ion-item>
+        <ion-item>
+            <ion-avatar>
+              <img src="../../../assets/img/fork.png">
+            </ion-avatar>
+        </ion-item>
+        <ion-item> fork </ion-item>
     </ion-col>
-    <ion-col>
-      <ion-item> {{bicycle.wheelName}} </ion-item>
+    <ion-col>     
+        <ion-item>
+            <ion-avatar>
+              <img src="../../../assets/img/handlebar.png">
+            </ion-avatar>
+        </ion-item>
+        <ion-item> handlebar </ion-item> 
     </ion-col>
-    <ion-col>
-      <ion-item> {{bicycle.breaksName}} </ion-item>
+    <ion-col>     
+        <ion-item>
+            <ion-avatar>
+              <img src="../../../assets/img/brakes.png">
+            </ion-avatar>
+        </ion-item>
+        <ion-item> {{bicycle.breaksName}}  </ion-item>
     </ion-col>
   </ion-row>
 </ion-grid>

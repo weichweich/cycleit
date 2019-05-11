@@ -1,21 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Add bicycle</ion-title>
-    
-    <ion-buttons slot="secondary">
-        <ion-button defaultHref="/profile" routerDirection="root">
-        <ion-icon slot="icon-only" name="back"></ion-icon>
-      </ion-button>
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-item>
-        <ion-label position="stacked">Stacked Label</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-    
+<ion-content>  
       <ion-item>
         <ion-label>Brand</ion-label>
         <ion-select placeholder="Brand">
@@ -39,5 +31,4 @@
           <ion-select-option value="6">XYZ6</ion-select-option>
         </ion-select>
       </ion-item>
-    
 </ion-content>
