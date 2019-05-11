@@ -2,8 +2,8 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 
-from cycleit.models import BicycleModel, Manufactures
-from cycleit.serializers import ManufacturesSerializer
+from cycleit.models import BicycleModel, Manufactures, BicycleConfiguration, Frame, Wheel, Breaks, GroupSet, User
+from cycleit.serializers import ManufacturesSerializer, BicycleModelSerializer, BicycleConfigurationSerializer, FrameSerializer, WheelSerializer, BreaksSerializer, GroupSetSerializer, UserSerializer
 
 
 def make_endpoint(model, serializer):
@@ -28,3 +28,10 @@ def make_endpoint(model, serializer):
 
 
 manufactures_get_all = make_endpoint(Manufactures, ManufacturesSerializer)
+bicyclemodel_get_all = make_endpoint(BicycleModel, BicycleModelSerializer)
+bicycleconfig_get_all = make_endpoint(BicycleConfiguration, BicycleConfigurationSerializer)
+frame_get_all = make_endpoint(Frame, FrameSerializer)
+wheel_get_all = make_endpoint(Wheel, WheelSerializer)
+breaks_get_all = make_endpoint(Breaks, BreaksSerializer)
+user_get_all = make_endpoint(User, UserSerializer)
+
