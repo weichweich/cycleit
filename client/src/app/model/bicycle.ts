@@ -6,4 +6,9 @@ export class Bicycle {
     frameName: String;
     wheelName: String;
     breaksName: String;
+    constructor(values: Object = {}) {
+  
+        Object.assign(this, values);
+        
+        }
 }

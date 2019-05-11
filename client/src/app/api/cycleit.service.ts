@@ -51,6 +51,13 @@ export class CycleitService {
 
         // });
     }
+    public getBicycleByUserId(user_id) : Observable<Bicycle[]> {
+        return this.httpClient
+          .get<Bicycle[]>(this.baseUrl + '/BicycleModelList' + user_id)
+          .map(models => {
+          return models.map((model) => new Bicycle(model));
+        })
+    } 
 
     public getProfile(id): Observable<Profile> {
         return this.httpClient
