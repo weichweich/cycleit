@@ -8,7 +8,8 @@ urlpatterns = [
     path('BicycleModelList/', views.BicycleModelList.as_view()),
     path('BicycleModelDetail/', views.BicycleModelDetail.as_view()),
     path('BicycleConfigurationList/', views.BicycleConfigurationList.as_view()),
-    path('BicycleConfigurationDetail/', views.BicycleConfigurationDetail.as_view()),
+    path('BicycleConfigurationDetail/',
+         views.BicycleConfigurationDetail.as_view()),
     path('FrameList/', views.FrameList.as_view()),
     path('FrameDetail/', views.FrameDetail.as_view()),
     path('WheelList/', views.WheelList.as_view()),
@@ -18,25 +19,3 @@ urlpatterns = [
     path('UserList/', views.UserList.as_view()),
     path('UserDetail/', views.UserDetail.as_view()),
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

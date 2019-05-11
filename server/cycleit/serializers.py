@@ -1,50 +1,52 @@
 from rest_framework import serializers
 
-from cycleit.models import BicycleModel, Manufactures, Frame, Wheel, Breaks, GroupSet, User
+from cycleit.models import (BicycleConfiguration, BicycleModel, Breaks, Frame,
+                            GroupSet, Manufactures, User, Wheel)
 
 
 class ManufacturesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Manufactures
-        fields = ('name')
+        fields = '__all__'
 
 
 class BicycleModelSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Manufactures
-        fields = ('name', 'year', 'manufacturer')
+        model = BicycleModel
+        fields = '__all__'
 
 
 class BicycleConfigurationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Manufactures
-        fields = ('model', 'frame', 'wheel', 'group_set', 'group_set')
+        model = BicycleConfiguration
+        fields = '__all__'
 
 
 class FrameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Frame
-        fields = ('name', )
+        fields = '__all__'
 
 
 class WheelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Wheel
-        fields = ('name', )
+        fields = '__all__'
 
 
 class BreaksSerializer(serializers.ModelSerializer):
     class Meta:
         model = Breaks
-        fields = ('name', )
+        fields = '__all__'
 
 
 class GroupSetSerializer(serializers.ModelSerializer):
     class Meta:
         model = GroupSet
-        fields = ('name', )
+        fields = '__all__'
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('name', 'email')
+        fields = '__all__'
