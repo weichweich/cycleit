@@ -1,5 +1,7 @@
 # Server irgnores
 .python-version
+.vscode
+Pipfile.lock
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
