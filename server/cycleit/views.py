@@ -6,20 +6,25 @@ from cycleit.models import BicycleModel, Manufactures
 from cycleit.serializers import ManufacturesSerializer
 
 
-@csrf_exempt
-def snippet_list(request):
-    """
-    List all code snippets, or create a new snippet.
-    """
-    if request.method == 'GET':
-        snippets = Manufactures.objects.all()
-        serializer = ManufacturesSerializer(snippets, many=True)
-        return JsonResponse(serializer.data, safe=False)
+def make_endpoint(model, serializer):
+    @csrf_exempt
+    def get_all(request):
+        """
+        List all code snippets, or create a new snippet.
+        """
+        if request.method == 'GET':
+            snippets = model.objects.all()
+            serializer = serializer(snippets, many=True)
+            return JsonResponse(serializer.data, safe=False)
 
-    elif request.method == 'POST':
-        data = JSONParser().parse(request)
-        serializer = ManufacturesSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data, status=201)
-        return JsonResponse(serializer.errors, status=400)
+        elif request.method == 'POST':
+            data = JSONParser().parse(request)
+            serializer = serializer(data=data)
+            if serializer.is_valid():
+                serializer.save()
+                return JsonResponse(serializer.data, status=201)
+            return JsonResponse(serializer.errors, status=400)
+    return get_all
+
+
+manufactures_get_all = make_endpoint(Manufactures, ManufacturesSerializer)

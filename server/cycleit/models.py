@@ -27,9 +27,17 @@ class GroupSet(models.Model):
     name = models.CharField(max_length=200)
 
 
+class User(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+
+
 class BicycleConfiguration(models.Model):
+    """Preset configurations from which the user can choose.
+    """
     model = models.ForeignKey(BicycleModel, on_delete=models.CASCADE)
     frame = models.ForeignKey(Frame, on_delete=models.CASCADE)
     wheel = models.ForeignKey(Wheel, on_delete=models.CASCADE)
     breaks = models.ForeignKey(Breaks, on_delete=models.CASCADE)
     group_set = models.ForeignKey(GroupSet, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
