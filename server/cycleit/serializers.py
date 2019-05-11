@@ -19,7 +19,6 @@ class BicycleConfigurationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Manufactures
         fields = ('model', 'frame', 'wheel', 'group_set', 'group_set')
-        fields = ('id', 'title', 'code', 'linenos', 'language', 'style')
 
 
 class FrameSerializer(serializers.ModelSerializer):
