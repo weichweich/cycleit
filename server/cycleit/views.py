@@ -2,7 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 
-from cycleit.models import BycicleModel, Manufactures
+from cycleit.models import BicycleModel, Manufactures
 from cycleit.serializers import ManufacturesSerializer
 
 
