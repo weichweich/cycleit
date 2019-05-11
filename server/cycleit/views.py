@@ -1,6 +1,6 @@
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import generics
+from rest_framework import generics
 
 from cycleit.models import (BicycleConfiguration, BicycleModel, Breaks, Frame,
                             GroupSet, Manufactures, User, Wheel)
@@ -37,38 +37,38 @@ class BicycleModelDetail(generics.RetrieveUpdateDestroyAPIView):
 
 # BicycleConfiguration
 
-class BicycleConfigurationModelList(generics.ListCreateAPIView):
-    queryset = BicycleConfigurationModel.objects.all()
+class BicycleConfigurationList(generics.ListCreateAPIView):
+    queryset = BicycleConfiguration.objects.all()
     serializer_class = BicycleConfigurationSerializer
 
 
-class BicycleConfigurationModelDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = BicycleConfigurationModel.objects.all()
+class BicycleConfigurationDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = BicycleConfiguration.objects.all()
     serializer_class = BicycleConfigurationSerializer
 
 
-# FrameModel
+# Frame
 
 
-class FrameModelList(generics.ListCreateAPIView):
+class FrameList(generics.ListCreateAPIView):
     queryset = Frame.objects.all()
     serializer_class = FrameSerializer
 
 
-class FrameModelDetail(generics.RetrieveUpdateDestroyAPIView):
+class FrameDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Frame.objects.all()
     serializer_class = FrameSerializer
 
 
-# WheelModel
+# Wheel
 
-class WheelModelList(generics.ListCreateAPIView):
-    queryset = WheelModel.objects.all()
+class WheelList(generics.ListCreateAPIView):
+    queryset = Wheel.objects.all()
     serializer_class = WheelSerializer
 
 
 class WheelDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = WheelModel.objects.all()
+    queryset = Wheel.objects.all()
     serializer_class = WheelSerializer
 
 

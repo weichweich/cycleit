@@ -40,4 +40,4 @@ class BicycleConfiguration(models.Model):
     wheel = models.ForeignKey(Wheel, on_delete=models.CASCADE)
     breaks = models.ForeignKey(Breaks, on_delete=models.CASCADE)
     group_set = models.ForeignKey(GroupSet, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
