@@ -27,14 +27,5 @@ const routes: Routes = [
     BicycleItemComponent
   ]
 })
-<<<<<<< Updated upstream
+
 export class ProfilePageModule { }
-=======
-export class ProfilePageModule {
-  addbikepage = AddbikePage;
-
-  constructor() {
-
-  }
-}
->>>>>>> Stashed changes
