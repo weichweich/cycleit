@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePage } from './profile.page';
-import { BicycleItemComponent } from './bicycle-item/bicycle-item.component';
+import { AddbikePage } from './addbike.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePage
+    component: AddbikePage
   }
 ];
 
@@ -22,19 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [
-    ProfilePage,
-    BicycleItemComponent
-  ]
+  declarations: [AddbikePage]
 })
-<<<<<<< Updated upstream
-export class ProfilePageModule { }
-=======
-export class ProfilePageModule {
-  addbikepage = AddbikePage;
-
-  constructor() {
-
-  }
-}
->>>>>>> Stashed changes
+export class AddbikePageModule {}
