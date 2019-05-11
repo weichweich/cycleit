@@ -7,3 +7,18 @@ pip install pipenv
 pipenv install --dev
 pipenv shell
 ```
+
+# Start Server
+
+local development server
+```
+cd server
+python manage.py runserver
+```
+
+public server
+
+```
+cd server
+python manage.py runserver 0.0.0.0:8000
+```
