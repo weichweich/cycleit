@@ -9,7 +9,7 @@ export const HansPeterProfile: Profile = {
         {
             id: 1,
             modelName: "Damen City Crouser",
-            modelYear: new Date(),
+            modelDate: new Date(),
             modelManufacturer: "Stevens",
             frameName: "Steel XS",
             wheelName: "28 Zoll Alu",
