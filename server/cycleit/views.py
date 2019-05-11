@@ -1,37 +1,97 @@
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
+from rest_framework.parsers import generics
 
-from cycleit.models import BicycleModel, Manufactures, BicycleConfiguration, Frame, Wheel, Breaks, GroupSet, User
-from cycleit.serializers import ManufacturesSerializer, BicycleModelSerializer, BicycleConfigurationSerializer, FrameSerializer, WheelSerializer, BreaksSerializer, GroupSetSerializer, UserSerializer
+from cycleit.models import (BicycleConfiguration, BicycleModel, Breaks, Frame,
+                            GroupSet, Manufactures, User, Wheel)
+from cycleit.serializers import (BicycleConfigurationSerializer,
+                                 BicycleModelSerializer, BreaksSerializer,
+                                 FrameSerializer, GroupSetSerializer,
+                                 ManufacturesSerializer, UserSerializer,
+                                 WheelSerializer)
 
-
-def make_endpoint(model, serializer):
-    @csrf_exempt
-    def get_all(request):
-        """
-        List all code snippets, or create a new snippet.
-        """
-        if request.method == 'GET':
-            snippets = model.objects.all()
-            serializer = serializer(snippets, many=True)
-            return JsonResponse(serializer.data, safe=False)
-
-        elif request.method == 'POST':
-            data = JSONParser().parse(request)
-            serializer = serializer(data=data)
-            if serializer.is_valid():
-                serializer.save()
-                return JsonResponse(serializer.data, status=201)
-            return JsonResponse(serializer.errors, status=400)
-    return get_all
+# Manufactures
 
 
-manufactures_get_all = make_endpoint(Manufactures, ManufacturesSerializer)
-bicyclemodel_get_all = make_endpoint(BicycleModel, BicycleModelSerializer)
-bicycleconfig_get_all = make_endpoint(BicycleConfiguration, BicycleConfigurationSerializer)
-frame_get_all = make_endpoint(Frame, FrameSerializer)
-wheel_get_all = make_endpoint(Wheel, WheelSerializer)
-breaks_get_all = make_endpoint(Breaks, BreaksSerializer)
-user_get_all = make_endpoint(User, UserSerializer)
+class ManufacturesList(generics.ListCreateAPIView):
+    queryset = Manufactures.objects.all()
+    serializer_class = ManufacturesSerializer
 
+
+class ManufacturesDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Manufactures.objects.all()
+    serializer_class = ManufacturesSerializer
+
+
+# BicycleModel
+
+class BicycleModelList(generics.ListCreateAPIView):
+    queryset = BicycleModel.objects.all()
+    serializer_class = BicycleModelSerializer
+
+
+class BicycleModelDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = BicycleModel.objects.all()
+    serializer_class = BicycleModelSerializer
+
+
+# BicycleConfiguration
+
+class BicycleConfigurationModelList(generics.ListCreateAPIView):
+    queryset = BicycleConfigurationModel.objects.all()
+    serializer_class = BicycleConfigurationSerializer
+
+
+class BicycleConfigurationModelDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = BicycleConfigurationModel.objects.all()
+    serializer_class = BicycleConfigurationSerializer
+
+
+# FrameModel
+
+
+class FrameModelList(generics.ListCreateAPIView):
+    queryset = Frame.objects.all()
+    serializer_class = FrameSerializer
+
+
+class FrameModelDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Frame.objects.all()
+    serializer_class = FrameSerializer
+
+
+# WheelModel
+
+class WheelModelList(generics.ListCreateAPIView):
+    queryset = WheelModel.objects.all()
+    serializer_class = WheelSerializer
+
+
+class WheelDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = WheelModel.objects.all()
+    serializer_class = WheelSerializer
+
+
+# Breaks
+
+
+class BreaksList(generics.ListCreateAPIView):
+    queryset = Breaks.objects.all()
+    serializer_class = BreaksSerializer
+
+
+class BreaksDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Breaks.objects.all()
+    serializer_class = BreaksSerializer
+
+
+# User
+
+class UserList(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
