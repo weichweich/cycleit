@@ -1,13 +1,13 @@
 import { Profile } from './model/profile';
 
 export const HansPeterProfile: Profile = {
-    id: 1,
+    id: 0,
     email: "hans.peter@posteo.de",
     firstname: "Hans",
     lastname: "Peter",
     bikes: [
         {
-            id: 1,
+            id: 0,
             modelName: "Damen City Crouser",
             modelDate: new Date(),
             modelManufacturer: "Stevens",
@@ -16,7 +16,7 @@ export const HansPeterProfile: Profile = {
             breaksName: "Full Metal Jacket",
         },
         {
-            id: 2,
+            id: 1,
             modelName: "Herren Trekking 9000",
             modelDate: new Date(),
             modelManufacturer: "Marks",
@@ -25,7 +25,7 @@ export const HansPeterProfile: Profile = {
             breaksName: "Backenbremsen",
         },
         {
-            id: 3,
+            id: 2,
             modelName: "Herren Trekking 9000",
             modelDate: new Date(),
             modelManufacturer: "Marks",

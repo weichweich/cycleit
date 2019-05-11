@@ -4,14 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-import { ProfilePage } from './profile.page';
-import { BicycleItemComponent } from './bicycle-item/bicycle-item.component';
+
+import { BicycleDetailsPage } from './bicycle-details.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePage,
-  },
+    component: BicycleDetailsPage
+  }
 ];
 
 @NgModule({
@@ -21,10 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [
-    ProfilePage,
-    BicycleItemComponent,
-  ]
+  declarations: [BicycleDetailsPage]
 })
-
-export class ProfilePageModule { }
+export class BicycleDetailsPageModule {}

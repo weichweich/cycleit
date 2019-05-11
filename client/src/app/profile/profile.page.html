@@ -15,7 +15,8 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let currentBicycle of bicycles;">
-      <app-bicycle-item [bicycle]="currentBicycle"></app-bicycle-item>
+      <app-bicycle-item routerLink="/detail/{{currentBicycle.id}}" [bicycle]="currentBicycle">
+      </app-bicycle-item>
     </ion-item>
   </ion-list>
 </ion-content>

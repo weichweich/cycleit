@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
-
+  { path: 'detail/:id', loadChildren: './profile/bicycle-details/bicycle-details.module#BicycleDetailsPageModule' }
 ];
 @NgModule({
   imports: [
@@ -11,4 +11,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
