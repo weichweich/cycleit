@@ -15,12 +15,14 @@ from cycleit.serializers import (BicycleConfigurationSerializer,
 
 
 class ManufacturesList(generics.ListCreateAPIView):
+    filterset_fields = ('id', )
     renderer_classes = (JSONRenderer, )
     queryset = Manufactures.objects.all()
     serializer_class = ManufacturesSerializer
 
 
 class ManufacturesDetail(generics.RetrieveUpdateDestroyAPIView):
+    filterset_fields = ('id', )
     renderer_classes = (JSONRenderer, )
     queryset = Manufactures.objects.all()
     serializer_class = ManufacturesSerializer
@@ -29,12 +31,14 @@ class ManufacturesDetail(generics.RetrieveUpdateDestroyAPIView):
 # BicycleModel
 
 class BicycleModelList(generics.ListCreateAPIView):
+    filterset_fields = ('id', )
     renderer_classes = (JSONRenderer, )
     queryset = BicycleModel.objects.all()
     serializer_class = BicycleModelSerializer
 
 
 class BicycleModelDetail(generics.RetrieveUpdateDestroyAPIView):
+    filterset_fields = ('id', 'manufacturer')
     renderer_classes = (JSONRenderer, )
     queryset = BicycleModel.objects.all()
     serializer_class = BicycleModelSerializer
@@ -43,12 +47,14 @@ class BicycleModelDetail(generics.RetrieveUpdateDestroyAPIView):
 # BicycleConfiguration
 
 class BicycleConfigurationList(generics.ListCreateAPIView):
+    filterset_fields = ('id', 'user')
     renderer_classes = (JSONRenderer, )
     queryset = BicycleConfiguration.objects.all()
     serializer_class = BicycleConfigurationSerializer
 
 
 class BicycleConfigurationDetail(generics.RetrieveUpdateDestroyAPIView):
+    filterset_fields = ('id', )
     renderer_classes = (JSONRenderer, )
     queryset = BicycleConfiguration.objects.all()
     serializer_class = BicycleConfigurationSerializer
@@ -58,12 +64,14 @@ class BicycleConfigurationDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class FrameList(generics.ListCreateAPIView):
+    filterset_fields = ('id', )
     renderer_classes = (JSONRenderer, )
     queryset = Frame.objects.all()
     serializer_class = FrameSerializer
 
 
 class FrameDetail(generics.RetrieveUpdateDestroyAPIView):
+    filterset_fields = ('id', )
     renderer_classes = (JSONRenderer, )
     queryset = Frame.objects.all()
     serializer_class = FrameSerializer
@@ -72,12 +80,14 @@ class FrameDetail(generics.RetrieveUpdateDestroyAPIView):
 # Wheel
 
 class WheelList(generics.ListCreateAPIView):
+    filterset_fields = ('id', )
     renderer_classes = (JSONRenderer, )
     queryset = Wheel.objects.all()
     serializer_class = WheelSerializer
 
 
 class WheelDetail(generics.RetrieveUpdateDestroyAPIView):
+    filterset_fields = ('id', )
     renderer_classes = (JSONRenderer, )
     queryset = Wheel.objects.all()
     serializer_class = WheelSerializer
@@ -87,12 +97,14 @@ class WheelDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class BreaksList(generics.ListCreateAPIView):
+    filterset_fields = ('id', )
     renderer_classes = (JSONRenderer, )
     queryset = Breaks.objects.all()
     serializer_class = BreaksSerializer
 
 
 class BreaksDetail(generics.RetrieveUpdateDestroyAPIView):
+    filterset_fields = ('id', )
     renderer_classes = (JSONRenderer, )
     queryset = Breaks.objects.all()
     serializer_class = BreaksSerializer
@@ -101,12 +113,14 @@ class BreaksDetail(generics.RetrieveUpdateDestroyAPIView):
 # User
 
 class UserList(generics.ListCreateAPIView):
+    filterset_fields = ('id', )
     renderer_classes = (JSONRenderer, )
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    filterset_fields = ('id', )
     renderer_classes = (JSONRenderer, )
     queryset = User.objects.all()
     serializer_class = UserSerializer
