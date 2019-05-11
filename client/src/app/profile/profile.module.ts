@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { ProfilePage } from './profile.page';
+import { BicycleItemComponent } from './bicycle-item/bicycle-item.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,9 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ProfilePage]
+  declarations: [
+    ProfilePage,
+    BicycleItemComponent
+  ]
 })
-export class ProfilePageModule {}
+export class ProfilePageModule { }

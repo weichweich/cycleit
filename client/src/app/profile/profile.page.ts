@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {CycleitService} from '../api/cycleit.service'
+import { CycleitService } from '../api/cycleit.service'
 import { Observable } from 'rxjs';
 import { Profile } from "../model/profile";
+import { HansPeterProfile } from '../mock-profile';
+import { Bicycle } from '../model/bicycle';
 
 @Component({
   selector: 'app-profile',
@@ -9,9 +11,12 @@ import { Profile } from "../model/profile";
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  bicycles: Bicycle[];
 
   results: Observable<any>;
-  constructor(private cycleitService :CycleitService) { }
+  constructor(private cycleitService: CycleitService) {
+    this.bicycles = HansPeterProfile.bikes;
+  }
 
   ngOnInit() {
   }

@@ -1,0 +1,35 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-icon slot="start" color="medium" name="bicycle"></ion-icon>
+        <ion-label>{{bicycle.modelName}}</ion-label>
+      </ion-item>
+      <!-- <ion-title> My bicycle 001 </ion-title> -->
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-item> {{bicycle.modelManufacturer}} </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item> {{bicycle.modelName}} </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item> {{bicycle.modelDate.getFullYear()}} </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-item> {{bicycle.frameName}} </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item> {{bicycle.wheelName}} </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item> {{bicycle.breaksName}} </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-grid>

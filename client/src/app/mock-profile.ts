@@ -14,6 +14,24 @@ export const HansPeterProfile: Profile = {
             frameName: "Steel XS",
             wheelName: "28 Zoll Alu",
             breaksName: "Full Metal Jacket",
+        },
+        {
+            id: 2,
+            modelName: "Herren Trekking 9000",
+            modelDate: new Date(),
+            modelManufacturer: "Marks",
+            frameName: "Holz",
+            wheelName: "28 Zoll Alu",
+            breaksName: "Backenbremsen",
+        },
+        {
+            id: 3,
+            modelName: "Herren Trekking 9000",
+            modelDate: new Date(),
+            modelManufacturer: "Marks",
+            frameName: "Holz",
+            wheelName: "28 Zoll Alu",
+            breaksName: "Backenbremsen",
         }
     ]
 }
