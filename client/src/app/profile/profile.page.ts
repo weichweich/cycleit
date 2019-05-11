@@ -16,6 +16,9 @@ export class ProfilePage implements OnInit {
   results: Observable<any>;
   constructor(private cycleitService: CycleitService) {
     this.bicycles = HansPeterProfile.bikes;
+    cycleitService.getBicycleByUserId(1).subscribe(x => {
+      this.bicycles = x;
+    });
   }
 
   ngOnInit() {

@@ -9,7 +9,7 @@ export const HansPeterProfile: Profile = {
         {
             id: 0,
             modelName: "Damen City Crouser",
-            modelDate: new Date(),
+            modelYear: new Date(),
             modelManufacturer: "Stevens",
             frameName: "Steel XS",
             wheelName: "28 Zoll Alu",
@@ -21,7 +21,7 @@ export const HansPeterProfile: Profile = {
         {
             id: 1,
             modelName: "Herren Trekking 9000",
-            modelDate: new Date(),
+            modelYear: new Date(),
             modelManufacturer: "Marks",
             frameName: "Holz",
             wheelName: "28 Zoll Alu",
@@ -33,7 +33,7 @@ export const HansPeterProfile: Profile = {
         {
             id: 2,
             modelName: "Herren Trekking 9000",
-            modelDate: new Date(),
+            modelYear: new Date(),
             modelManufacturer: "Marks",
             frameName: "Holz",
             wheelName: "28 Zoll Alu",
