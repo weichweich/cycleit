@@ -6,4 +6,8 @@ export class Profile {
     firstname: String;
     lastname: String;
     bikes: Bicycle[];
+
+    constructor(values: Object = {}) {
+        Object.assign(this, values);
+    }
 }

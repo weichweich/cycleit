@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CycleitService} from '../api/cycleit.service'
 import { Observable } from 'rxjs';
+import { Profile } from "../model/profile";
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,9 @@ export class ProfilePage implements OnInit {
   }
   searchChanged() {
     // Call our service function which returns an Observable
-    this.results = this.cycleitService.getManufacturers();
-    this.results.subscribe();
+    this.results = this.cycleitService.getProfile(1);
+    this.results.subscribe((profile) => {
+      console.log(profile)
+    });
   }
 }
