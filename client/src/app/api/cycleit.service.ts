@@ -34,18 +34,18 @@ export class CycleitService {
 
   public getManufacturers(): Observable<Manufacturers[]>{
     return  this.httpClient
-      .get(this.baseUrl + '/ManufacturesList')
+      .get<Manufacturers[]>(this.baseUrl + '/ManufacturesList')
       .map(manufaturers  => {
 
         return  manufaturers.map((manufacturer) =>  new  Manufacturers(manufacturer));
         
         })
         
-        .catch((err)=>{
+        // .catch((err)=>{
         
-        console.error(err);
+        // console.error(err);
         
-        });
+        // });
         
         
   }
