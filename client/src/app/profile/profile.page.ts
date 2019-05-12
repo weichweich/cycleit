@@ -12,9 +12,11 @@ import { Bicycle } from '../model/bicycle';
 })
 export class ProfilePage implements OnInit {
   bicycles: Bicycle[];
+  profile: Profile;
 
   results: Observable<any>;
   constructor(private cycleitService: CycleitService) {
+    this.profile = HansPeterProfile;
     this.bicycles = HansPeterProfile.bikes;
     cycleitService.getBicycleByUserId(1).subscribe(x => {
       this.bicycles = x;
