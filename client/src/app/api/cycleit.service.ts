@@ -21,6 +21,7 @@ import { Frame } from '../model/frame';
 import { Groupset } from '../model/groupset';
 import { Profile } from '../model/profile';
 import { Wheel } from '../model/wheels';
+import { RepairShop } from '../model/repair_shop';
 import { forkJoin } from 'rxjs';
 import { map } from 'rxjs-compat/operator/map';
 
@@ -62,6 +63,12 @@ export class CycleitService {
     return this.httpClient
       .get<Wheel>(this.baseUrl + '/WheelDetail/' + id)
       .map(wheel => new Wheel(wheel));
+  }
+
+  public getRepairShop(id): Observable<Wheel> {
+    return this.httpClient
+      .get<RepairShop>(this.baseUrl + '/RepairShopDetail/' + id)
+      .map(repairShop => new RepairShop(repairShop));
   }
 
   public getModel(id): Observable<BicycleModel> {
