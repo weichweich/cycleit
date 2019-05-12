@@ -32,3 +32,9 @@ public server
 cd server
 python manage.py runserver 0.0.0.0:8000
 ```
+
+## load dummy data:
+
+```
+python manage.py loaddata dummydata.json
+```
