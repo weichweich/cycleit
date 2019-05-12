@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Bicycle } from 'src/app/model/bicycle';
-
-import { HansPeterProfile } from '../../mock-profile';
+import { CycleitService } from 'src/app/api/cycleit.service';
 
 @Component({
   selector: 'app-bicycle-details',
@@ -15,17 +14,23 @@ export class BicycleDetailsPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private location: Location
-  ) { }
+    private location: Location,
+    private cycleitService: CycleitService
+  ) {
+    this.getBicycle();
+  }
 
   ngOnInit() {
-    this.getBicycle();
+
   }
 
   getBicycle(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.bicycle = HansPeterProfile.bikes[id];
-    // Call service e.g. getBicycleById(id)
+    this.cycleitService.getBicycleById(id).subscribe(
+      bike => {
+        this.bicycle = bike;
+      }
+    );
   }
 
 }

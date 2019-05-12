@@ -33,30 +33,4 @@ export class RepairPage implements OnInit {
 
   ngOnInit() {
   }
-
-  choose_workstation(shop: RepairShop) {
-    this.cycleitService.createRepairCase(new RepairCase({
-      "defect": this.defect,
-      "bicycleConfig": 1,
-      "user": 1,
-      "repairShop": shop.id,
-      "price": 20,
-    })).subscribe(x => {
-
-      console.log("Submitted");
-    }
-    );
-    this.presentAlert(shop);
-    this.shops = []
-
-  }
-  async presentAlert(shop) {
-    const alert = await this.alertController.create({
-      header: 'Submission',
-      message: 'Your order is submitted to ' + shop.name,
-      buttons: ['OK']
-    });
-
-    await alert.present();
-  }
 }

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{bicycle.modelName}}</ion-title>
+    <ion-title *ngIf="bicycle">{{bicycle.modelName}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,5 +8,42 @@
 </ion-header>
 
 <ion-content>
-  A detailed list of the bicycle with ID: {{bicycle.id}}
+  <ion-list *ngIf="bicycle">
+    <ion-item line="none">
+      <ion-thumbnail slot="start">
+        <img src="../../../assets/img/frame.png">
+      </ion-thumbnail>
+      <ion-label>{{bicycle.frameName}}</ion-label>
+    </ion-item>
+    <ion-item line="none">
+      <ion-thumbnail slot="start">
+        <img src="../../../assets/img/chain.png">
+      </ion-thumbnail>
+      <ion-label>{{bicycle.chainName}}</ion-label>
+    </ion-item>
+    <ion-item line="none">
+      <ion-thumbnail slot="start">
+        <img src="../../../assets/img/wheels.png">
+      </ion-thumbnail>
+      <ion-label>{{bicycle.wheelName}}</ion-label>
+    </ion-item>
+    <ion-item line="none">
+      <ion-thumbnail slot="start">
+        <img src="../../../assets/img/fork.png">
+      </ion-thumbnail>
+      <ion-label>{{bicycle.forkName}}</ion-label>
+    </ion-item>
+    <ion-item line="none">
+      <ion-thumbnail slot="start">
+        <img src="../../../assets/img/handlebar.png">
+      </ion-thumbnail>
+      <ion-label>{{bicycle.handlebarName}}</ion-label>
+    </ion-item>
+    <ion-item line="none">
+      <ion-thumbnail slot="start">
+        <img src="../../../assets/img/brakes.png">
+      </ion-thumbnail>
+      <ion-label>{{bicycle.brakeName}}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
