@@ -22,6 +22,7 @@ export class RepairPage implements OnInit {
 
   results: Observable<any>;
   constructor(private cycleitService: CycleitService, public alertController: AlertController) {
+    this.bicycles = []
     cycleitService.getBicycleByUserId(1).subscribe(x => {
       this.bicycles = x;
     });

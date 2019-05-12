@@ -127,7 +127,7 @@ export class CycleitService {
       return results[0].map((result, i) => {
         return new Bicycle({
           "wheelName": results[1][i].name,
-          "id": results[0]["id"],
+          "id": results[0][i]["id"],
           "modelName": results[4][i].name,
           "modelYear": "test",
           "modelManufacturer": "test",
