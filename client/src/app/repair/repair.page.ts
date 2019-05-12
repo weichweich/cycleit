@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CycleitService } from '../api/cycleit.service';
 import { BicycleModel } from '../model/bicycle-model';
 import { RepairCase } from '../model/repair-case';
+import { RepairShop } from '../model/repair_shop';
 
 @Component({
   selector: 'app-repair',
@@ -15,6 +16,8 @@ export class RepairPage implements OnInit {
   bicycles: Bicycle[];
   models: BicycleModel;
   defect: string;
+  shops: RepairShop[];
+
 
   results: Observable<any>;
   constructor(private cycleitService: CycleitService) {
@@ -37,8 +40,12 @@ export class RepairPage implements OnInit {
       "bicycleConfig": 1,
       "user":1,
     })).subscribe(x =>{
-      
-      
+        this.cycleitService.getRepairShops().subscribe( x =>{
+          this.shops = x;
+          console.log("Shops arrived");
+        }
+        )
+
       console.log("test")
     });
 

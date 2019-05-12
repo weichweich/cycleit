@@ -14,13 +14,22 @@
         <ion-icon slot="start" color="medium" name="bicycle"></ion-icon>
         <ion-label>{{currentBicycle.modelName}}</ion-label>
       </ion-item>
-    
+    </div>
+
       <ion-item>
         <ion-label>Defekt</ion-label>
         <ion-input type="text" [(ngModel)]="defect"></ion-input>
       </ion-item>
       <button ion-button (click)="push_submit($event)">Submit</button>
+      <ion-label>Repair Shops</ion-label>
 
-    </div>
+      <ion-item *ngFor="let currentShop of shops">
+          <ion-item> {{currentShop.name}}
+          </ion-item>
+          <ion-item> {{currentShop.price}}
+            </ion-item>
+
+        </ion-item>
+
   </ion-list>
 </ion-content>

@@ -66,10 +66,10 @@ export class CycleitService {
       .map(wheel => new Wheel(wheel));
   }
 
-  public getRepairShops(id): Observable<RepairShop> {
+  public getRepairShops(): Observable<RepairShop[]> {
     return this.httpClient
-      .get<RepairShop>(this.baseUrl + '/RepairShopList/')
-      .map(repairShop => new RepairShop(repairShop));
+      .get<RepairShop[]>(this.baseUrl + '/RepairShopList/')
+      .map(repairShops => repairShops.map(repairShop => new RepairShop(repairShop)));
   }
 
   public getRepairShop(id): Observable<RepairShop> {
