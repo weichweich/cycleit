@@ -128,7 +128,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 # RepairCase
 
 class RepairCaseList(generics.ListCreateAPIView):
-    filterset_fields = ('id', )
+    filterset_fields = ('id', 'user')
     renderer_classes = (JSONRenderer, )
     queryset = RepairCase.objects.all()
     serializer_class = RepairCaseSerializer

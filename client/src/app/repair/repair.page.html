@@ -19,10 +19,12 @@
         <ion-label>Modell</ion-label>
         <ion-select placeholder="Select One">
           <ion-item *ngFor="let currentModel of models;">
-
-          <ion-select-option value="1">{{currentModel.Name}}</ion-select-option>
-     
+            <ion-select-option value="1">
+              {{currentModel.Name}}
+            </ion-select-option>
           </ion-item>
         </ion-select>
       </ion-item>
+    </div>
+  </ion-list>
 </ion-content>

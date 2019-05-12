@@ -113,8 +113,8 @@ export class CycleitService {
       .get<Manufacturer>(this.baseUrl + '/ManufacturerDetail/' + id)
       .map(manufacturer => new Manufacturer(manufacturer))
   }
-  public getBicycleByUserId(user_id): Observable<Bicycle[]> {
-    let bikes = this.httpClient.get<any[]>(this.baseUrl + '/BicycleConfigurationList?user=' + user_id);
+  public getBicycleByUserId(user): Observable<Bicycle[]> {
+    let bikes = this.httpClient.get<any[]>(this.baseUrl + '/BicycleConfigurationList?user=' + user);
     let wheels = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getWheel(bike["wheel"])))));
     let frames = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getFrame(bike["frame"])))));
     let brakes = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getBrake(bike["breaks"])))));
@@ -151,12 +151,12 @@ export class CycleitService {
       "bicycleConfig": repair_case.bicycleConfig,
       "defect": repair_case.defect,
       "price": repair_case.price,
-      "repair_shop": repair_case.repair_shop,
+      "repair_shop": repair_case.repairShop,
     })
   }
 
-  public getRepairCases(user_id: number): Observable<RepairCase[]> {
-    let cases = this.httpClient.get<any[]>(this.baseUrl + '/RepairCaseList?user=' + user_id);
+  public getRepairCases(user: number): Observable<RepairCase[]> {
+    let cases = this.httpClient.get<any[]>(this.baseUrl + '/RepairCaseList?user=' + user);
     let shops = cases.pipe(mergeMap(cs => forkJoin(cs.map(cas => this.getRepairShop(cas["repair_shop"])))));
 
     return forkJoin(cases, shops).map(results => {
