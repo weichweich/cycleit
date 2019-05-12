@@ -31,7 +31,7 @@ class ManufacturesDetail(generics.RetrieveUpdateDestroyAPIView):
 # BicycleModel
 
 class BicycleModelList(generics.ListCreateAPIView):
-    filterset_fields = ('id', )
+    filterset_fields = ('id', 'manufacturer')
     renderer_classes = (JSONRenderer, )
     queryset = BicycleModel.objects.all()
     serializer_class = BicycleModelSerializer
