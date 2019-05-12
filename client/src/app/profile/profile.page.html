@@ -1,13 +1,6 @@
 <ion-header>
   <ion-toolbar>
     <ion-title> Profile </ion-title>
-
-    <ion-buttons slot="primary">
-      <ion-button routerLink="/addbike">
-        <ion-icon slot="icon-only" name="add"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
@@ -43,6 +36,11 @@
     <ion-label>
       Your bikes
     </ion-label>
+    <ion-buttons slot="end">
+      <ion-button slot="end" routerLink="/addbike">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-item-divider>
   <ion-list>
     <ion-item *ngFor="let currentBicycle of bicycles;">
