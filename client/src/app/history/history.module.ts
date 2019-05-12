@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { HistoryPage } from './history.page';
+import { RepairCaseItemComponent } from './repair-case-item/repair-case-item.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,9 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [HistoryPage]
+  declarations: [
+    HistoryPage, 
+    RepairCaseItemComponent
+  ]
 })
 export class HistoryPageModule {}
