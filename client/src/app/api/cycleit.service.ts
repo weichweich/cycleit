@@ -5,8 +5,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/catch';
-import { mergeMap } from 'rxjs/operators';
-
+import {
+  mergeAll,
+  mergeMap,
+  combineLatest
+} from 'rxjs/operators';
 
 import 'rxjs/add/operator/map';
 
@@ -19,6 +22,7 @@ import { Groupset } from '../model/groupset';
 import { Profile } from '../model/profile';
 import { Wheel } from '../model/wheels';
 import { forkJoin } from 'rxjs';
+import { map } from 'rxjs-compat/operator/map';
 
 @Injectable({
   providedIn: 'root'
@@ -89,29 +93,25 @@ export class CycleitService {
       .map(manufacturer => new Manufacturer(manufacturer))
   }
   public getBicycleByUserId(user_id): Observable<Bicycle[]> {
-    return this.httpClient
-      .get<any[]>(this.baseUrl + '/BicycleConfigurationList?user=' + user_id)
-      .pipe(
-        mergeMap((bike,i) => {
-          let wheel = this.getWheel(bike["wheel"]);
-          let frame = this.getFrame(bike["frame"]);
+    let bikes = this.httpClient.get<any[]>(this.baseUrl + '/BicycleConfigurationList?user=' + user_id);
+    let wheels = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getWheel(bike["wheel"])))));
+    let frames = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getFrame(bike["frame"])))));
+    let brakes = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getBrake(bike["breaks"])))));
+    let bicycle_models = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getModel(bike["model"])))));
 
-          let brake = this.getBrake(bike["breaks"]);
-
-          let bicycle_model = this.getModel(bike["model"]);
-          return forkJoin([wheel, frame, brake, bicycle_model, bike])
-        }).apply(results => {
-          return new Bicycle({
-            "id":results[5]["id"],
-            "modelName":results[3].name,
-            "modelYear":results[3].year,
-            "modelManufacturer":"test",
-            "frameName":results[1].name,
-            "wheelName":results[0].name,
-            "breaksName":results[2].name
-          }) 
-      }))
-      
+    return forkJoin(bikes, wheels, frames, brakes, bicycle_models).map(results => {
+      return results[0].map((result, i) => {
+        return new Bicycle({
+          "wheelName": results[1][i].name,
+          "id": results[0]["id"],
+          "modelName": results[4][i].name,
+          "modelYear": "test",
+          "modelManufacturer": "test",
+          "frameName": results[2][i].name,
+          "breaksName": results[3][i].name,
+        });
+      });
+    });
   }
 
   public getProfile(id): Observable<Profile> {
