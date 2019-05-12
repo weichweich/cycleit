@@ -5,10 +5,13 @@ export class Bicycle {
     modelManufacturer: String;
     frameName: String;
     wheelName: String;
-    breaksName: String;
+    brakeName: String;
+    chainName: String;
+    forkName: String;
+    handlebarName: String;
     constructor(values: Object = {}) {
-  
+
         Object.assign(this, values);
-        
-        }
+
+    }
 }

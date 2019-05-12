@@ -13,7 +13,10 @@ export const HansPeterProfile: Profile = {
             modelManufacturer: "Stevens",
             frameName: "Steel XS",
             wheelName: "28 Zoll Alu",
-            breaksName: "Full Metal Jacket",
+            brakeName: "Full Metal Jacket",
+            chainName: "2Chainz",
+            forkName: "Federgabel",
+            handlebarName: "Breiter Lencker"
         },
         {
             id: 1,
@@ -22,7 +25,10 @@ export const HansPeterProfile: Profile = {
             modelManufacturer: "Marks",
             frameName: "Holz",
             wheelName: "28 Zoll Alu",
-            breaksName: "Backenbremsen",
+            brakeName: "Backenbremsen",
+            chainName: "2Chainz",
+            forkName: "Federgabel",
+            handlebarName: "Breiter Lencker"
         },
         {
             id: 2,
@@ -31,7 +37,10 @@ export const HansPeterProfile: Profile = {
             modelManufacturer: "Marks",
             frameName: "Holz",
             wheelName: "28 Zoll Alu",
-            breaksName: "Backenbremsen",
+            brakeName: "Backenbremsen",
+            chainName: "2Chainz",
+            forkName: "Federgabel",
+            handlebarName: "Breiter Lencker"
         }
     ]
 }
