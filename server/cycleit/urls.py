@@ -18,4 +18,8 @@ urlpatterns = [
     path('BreaksDetail/<int:pk>', views.BreaksDetail.as_view()),
     path('UserList/', views.UserList.as_view()),
     path('UserDetail/<int:pk>', views.UserDetail.as_view()),
+    path('RepairShopList/', views.RepairShopList.as_view()),
+    path('RepairShopDetail/<int:pk>', views.RepairShopDetail.as_view()),
+    path('RepairCaseList/', views.RepairCaseList.as_view()),
+    path('RepairCaseDetail/<int:pk>', views.RepairCaseDetail.as_view()),
 ]
