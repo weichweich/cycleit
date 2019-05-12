@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HansPeterProfile } from '../mock-profile';
 import { Bicycle } from '../model/bicycle';
+import { BicycleModel } from '../model/bicycle-model';
 import { Observable } from 'rxjs';
 import { CycleitService } from '../api/cycleit.service';
 
@@ -10,13 +11,12 @@ import { CycleitService } from '../api/cycleit.service';
   styleUrls: ['./repair.page.scss'],
 })
 export class RepairPage implements OnInit {
-  bicycles: Bicycle[];
+  models: BicycleModel[];
 
   results: Observable<any>;
   constructor(private cycleitService: CycleitService) {
-    this.bicycles = HansPeterProfile.bikes;
-    cycleitService.getBicycleByUserId(1).subscribe(x => {
-      this.bicycles = x;
+    cycleitService.getBicycleModelsByManufacturerId(1).subscribe(x => {
+      this.models = x;
     });
   }
 

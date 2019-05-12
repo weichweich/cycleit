@@ -39,7 +39,7 @@ export class CycleitService {
 
   public getBicycleModelsByManufacturerId(manufactorerId): Observable<BicycleModel[]> {
     return this.httpClient
-      .get<BicycleModel[]>(this.baseUrl + '/BicycleModelList' + manufactorerId)
+      .get<BicycleModel[]>(this.baseUrl + '/BicycleModelList/' + manufactorerId)
       .map(models => {
         return models.map((model) => new BicycleModel(model));
       })
