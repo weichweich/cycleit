@@ -29,8 +29,23 @@
   </ion-list-header>
   <ion-list>
     <ion-item *ngFor="let currentShop of shops">
-      <ion-item (click)="choose_workstation(currentShop)"> {{currentShop.name}}
-      </ion-item>
+      <div (click)="choose_workstation(currentShop)">
+              <ion-col size="12">
+                <ion-item class="ion-text-center">
+                  <ion-label position="stacked">Name {{currentShop.name}}</ion-label>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12">
+                <ion-item class="ion-text-center">
+                  <ion-label position="stacked">Rating {{currentShop.rating}}</ion-label>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12">
+                <ion-item class="ion-text-center">
+                  <ion-label position="stacked">Preis 20€</ion-label>
+                </ion-item>
+              </ion-col>
+      </div>
     </ion-item>
   </ion-list>
 
