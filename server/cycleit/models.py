@@ -43,3 +43,17 @@ class BicycleConfiguration(models.Model):
     breaks = models.ForeignKey(Breaks, on_delete=models.CASCADE)
     group_set = models.ForeignKey(GroupSet, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
+
+class RepairShop(models.Model):
+    name = models.CharField(max_length=200)
+    location = models.CharField(max_length=200)
+    rating = models.IntegerField()
+
+
+class RepairCase(models.Model):
+    bicycleConfig = models.ForeignKey(BicycleConfiguration, on_delete=models.CASCADE)
+    defect = models.CharField(max_length=200)
+    price = models.IntegerField(null=True)
+    repair_shop = models.ForeignKey(RepairShop, on_delete=models.CASCADE, null=True)
+
