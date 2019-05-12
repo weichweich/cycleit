@@ -24,10 +24,9 @@
       <ion-label>Repair Shops</ion-label>
 
       <ion-item *ngFor="let currentShop of shops">
-          <ion-item> {{currentShop.name}}
+          <ion-item (click)="choose_workstation(currentShop)"> {{currentShop.name}}
           </ion-item>
-          <ion-item> {{currentShop.price}}
-            </ion-item>
+
 
         </ion-item>
 

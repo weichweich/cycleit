@@ -33,21 +33,40 @@ export class RepairPage implements OnInit {
   ngOnInit() {
   }
 
-  push_submit() {
-    // Call our service function which returns an Observable
+  choose_workstation(shop:RepairShop) {
     this.cycleitService.createRepairCase(new RepairCase({
-      "defect":this.defect,
-      "bicycleConfig": 1,
-      "user":1,
-    })).subscribe(x =>{
+        "defect":this.defect,
+        "bicycleConfig": 1,
+        "user":1,
+        "repairShop":shop.id,
+        
+      })).subscribe(x =>{
+
+            console.log("Submitted");
+      }
+      )
+  }
+
+  push_submit() {
         this.cycleitService.getRepairShops().subscribe( x =>{
           this.shops = x;
           console.log("Shops arrived");
         }
         )
+    // Call our service function which returns an Observable
+    // this.cycleitService.createRepairCase(new RepairCase({
+    //   "defect":this.defect,
+    //   "bicycleConfig": 1,
+    //   "user":1,
+    // })).subscribe(x =>{
+    //     this.cycleitService.getRepairShops().subscribe( x =>{
+    //       this.shops = x;
+    //       console.log("Shops arrived");
+    //     }
+    //     )
 
-      console.log("test")
-    });
+    //   console.log("test")
+    // });
 
   }
 }

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
-
+import {of} from 'rxjs'
 import 'rxjs/add/operator/catch';
 import {
   mergeAll,
@@ -157,8 +157,13 @@ export class CycleitService {
   }
 
   public getRepairCases(user: number): Observable<RepairCase[]> {
-    let cases = this.httpClient.get<any[]>(this.baseUrl + '/RepairCaseList?user=' + user);
-    let shops = cases.pipe(mergeMap(cs => forkJoin(cs.map(cas => this.getRepairShop(cas["repair_shop"])))));
+    let cases = this.httpClient.get<any[]>(this.baseUrl + '/RepairCaseList/?user=' + user);
+    let shops = cases.pipe(mergeMap(cs => forkJoin(cs.map(cas => {
+      if (cas["repair_shop"] == null) {
+        return of({"name": "NA"})
+      }
+      return this.getRepairShop(cas["repair_shop"])
+    }))));
 
     return forkJoin(cases, shops).map(results => {
       return results[0].map((result, i) => {
