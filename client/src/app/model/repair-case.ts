@@ -3,7 +3,7 @@ export class RepairCase {
     bicycleConfig: number;
     defect: string;
     price: number;
-    repair_shop: number;
+    repairShop: number;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);

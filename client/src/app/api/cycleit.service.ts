@@ -146,11 +146,21 @@ export class CycleitService {
   }
 
   public getRepairCases(user_id: number): Observable<RepairCase[]> {
-    return this.httpClient.get<RepairCase[]>(this.baseUrl + '/RepairCaseList/?user=' + user_id)
-               .map(repair_cases => {return repair_cases.map(
-                 repair_case => new RepairCase(repair_case)
-                )}
-              );
-  }
+    let cases = this.httpClient.get<any[]>(this.baseUrl + '/RepairCaseList?user=' + user_id);
+    let shops = cases.pipe(mergeMap(cs => forkJoin(cs.map(cas => this.getRepairShop(cas["repair_shop"])))));
 
+    return forkJoin(cases, shops).map(results => {
+      return results[0].map((result, i) => {
+        let rc =  new RepairCase({
+          "id": results[0][i].id,
+          "bicycleConfig": results[0][i].bicycleConfig,
+          "defect": results[0][i].defect,
+          "price": results[0][i].price,
+          "repairShop": results[1][i].name,
+        });
+        console.log(rc);
+        return rc;
+      });
+    });
+  }
 }
