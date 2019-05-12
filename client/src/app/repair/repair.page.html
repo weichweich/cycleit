@@ -6,7 +6,7 @@
 
 <ion-content>
   <ion-list-header>
-    <ion-label>Choose a bike to repair</ion-label>
+    <H1>Choose a bike to repair</H1>
   </ion-list-header>
   <ion-list>
     <div *ngFor="let currentBicycle of bicycles;">
@@ -14,21 +14,24 @@
         <ion-icon slot="start" color="medium" name="bicycle"></ion-icon>
         <ion-label>{{currentBicycle.modelName}}</ion-label>
       </ion-item>
-    </div>
-
       <ion-item>
         <ion-label>Defekt</ion-label>
         <ion-input type="text" [(ngModel)]="defect"></ion-input>
       </ion-item>
-      <button ion-button (click)="push_submit($event)">Submit</button>
-      <ion-label>Repair Shops</ion-label>
-
-      <ion-item *ngFor="let currentShop of shops">
-          <ion-item (click)="choose_workstation(currentShop)"> {{currentShop.name}}
-          </ion-item>
-
-
-        </ion-item>
-
+      <ion-item>
+        <ion-button (click)="push_submit($event)" color="secondary" full>Submit</ion-button>
+      </ion-item>
+    </div>
   </ion-list>
+
+  <ion-list-header>
+    <H1>Repair Shops</H1>
+  </ion-list-header>
+  <ion-list>
+    <ion-item *ngFor="let currentShop of shops">
+      <ion-item (click)="choose_workstation(currentShop)"> {{currentShop.name}}
+      </ion-item>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
