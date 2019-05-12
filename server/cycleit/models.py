@@ -24,7 +24,15 @@ class Breaks(models.Model):
     name = models.CharField(max_length=200)
 
 
-class GroupSet(models.Model):
+class ChainName(models.Model):
+    name = models.CharField(max_length=200)
+
+
+class HandlebarName(models.Model):
+    name = models.CharField(max_length=200)
+
+
+class ForkName(models.Model):
     name = models.CharField(max_length=200)
 
 
@@ -41,7 +49,9 @@ class BicycleConfiguration(models.Model):
     frame = models.ForeignKey(Frame, on_delete=models.CASCADE)
     wheel = models.ForeignKey(Wheel, on_delete=models.CASCADE)
     breaks = models.ForeignKey(Breaks, on_delete=models.CASCADE)
-    group_set = models.ForeignKey(GroupSet, on_delete=models.CASCADE)
+    chain_name = models.ForeignKey(ChainName, on_delete=models.CASCADE, null=True)
+    handlebar_name = models.ForeignKey(HandlebarName, on_delete=models.CASCADE, null=True)
+    fork_name = models.ForeignKey(ForkName, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
 

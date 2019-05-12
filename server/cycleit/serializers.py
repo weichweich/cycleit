@@ -1,7 +1,8 @@
 from rest_framework import serializers
 
-from cycleit.models import (BicycleConfiguration, BicycleModel, Breaks, Frame,
-                            GroupSet, Manufactures, User, Wheel, RepairCase, RepairShop)
+from cycleit.models import (BicycleConfiguration, BicycleModel, Breaks,
+                            ChainName, ForkName, Frame, HandlebarName,
+                            Manufactures, RepairCase, RepairShop, User, Wheel)
 
 
 class ManufacturesSerializer(serializers.ModelSerializer):
@@ -40,12 +41,6 @@ class BreaksSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class GroupSetSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = GroupSet
-        fields = '__all__'
-
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -61,4 +56,19 @@ class RepairShopSerializer(serializers.ModelSerializer):
 class RepairCaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = RepairCase
+        fields = '__all__'
+
+class ChainNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChainName
+        fields = '__all__'
+
+class HandlebarNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HandlebarName
+        fields = '__all__'
+
+class ForkNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ForkName
         fields = '__all__'
