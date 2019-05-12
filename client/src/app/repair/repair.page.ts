@@ -6,6 +6,7 @@ import { CycleitService } from '../api/cycleit.service';
 import { BicycleModel } from '../model/bicycle-model';
 import { RepairCase } from '../model/repair-case';
 import { RepairShop } from '../model/repair_shop';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-repair',
@@ -20,7 +21,7 @@ export class RepairPage implements OnInit {
 
 
   results: Observable<any>;
-  constructor(private cycleitService: CycleitService) {
+  constructor(private cycleitService: CycleitService, public alertController: AlertController) {
     this.bicycles = HansPeterProfile.bikes;
     cycleitService.getBicycleByUserId(1).subscribe(x => {
       this.bicycles = x;
@@ -44,9 +45,20 @@ export class RepairPage implements OnInit {
 
             console.log("Submitted");
       }
-      )
-  }
+      );
+      this.presentAlert(shop);
+      this.shops = []
 
+  }
+  async presentAlert(shop) {
+    const alert = await this.alertController.create({
+      header: 'Submission',
+      message: 'Your order is submitted to ' + shop.name,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
   push_submit() {
         this.cycleitService.getRepairShops().subscribe( x =>{
           this.shops = x;
