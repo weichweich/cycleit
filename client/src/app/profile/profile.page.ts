@@ -19,6 +19,7 @@ export class ProfilePage implements OnInit {
     this.profile = HansPeterProfile;
     this.bicycles = HansPeterProfile.bikes;
     cycleitService.getBicycleByUserId(1).subscribe(x => {
+      console.log(x);
       this.bicycles = x;
     });
   }

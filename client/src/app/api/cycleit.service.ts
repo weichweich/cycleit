@@ -123,7 +123,7 @@ export class CycleitService {
     let handlebar_name = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getModel(bike["handlebar_name"])))));
     let fork_name = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getModel(bike["fork_name"])))));
 
-    return forkJoin(bikes, wheels, frames, brakes, bicycle_models).map(results => {
+    return forkJoin(bikes, wheels, frames, brakes, bicycle_models, chain_name, handlebar_name, fork_name).map(results => {
       return results[0].map((result, i) => {
         return new Bicycle({
           "wheelName": results[1][i].name,
@@ -133,6 +133,9 @@ export class CycleitService {
           "modelManufacturer": "test",
           "frameName": results[2][i].name,
           "breaksName": results[3][i].name,
+          "chainName": results[5][i].name,
+          "forkName": results[7][i].name,
+          "handlebarName": results[6][i].name,  
         });
       });
     });
