@@ -152,6 +152,7 @@ export class CycleitService {
       "defect": repair_case.defect,
       "price": repair_case.price,
       "repair_shop": repair_case.repairShop,
+      "user": repair_case.user,
     })
   }
 

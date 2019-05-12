@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HansPeterProfile } from '../mock-profile';
 import { Bicycle } from '../model/bicycle';
-import { BicycleModel } from '../model/bicycle-model';
 import { Observable } from 'rxjs';
 import { CycleitService } from '../api/cycleit.service';
+import { BicycleModel } from '../model/bicycle-model';
+import { RepairCase } from '../model/repair-case';
 
 @Component({
   selector: 'app-repair',
@@ -11,22 +12,35 @@ import { CycleitService } from '../api/cycleit.service';
   styleUrls: ['./repair.page.scss'],
 })
 export class RepairPage implements OnInit {
-  models: BicycleModel[];
+  bicycles: Bicycle[];
+  models: BicycleModel;
+  defect: string;
 
   results: Observable<any>;
   constructor(private cycleitService: CycleitService) {
-    cycleitService.getBicycleModelsByManufacturerId(1).subscribe(x => {
+    this.bicycles = HansPeterProfile.bikes;
+    cycleitService.getBicycleByUserId(1).subscribe(x => {
+      this.bicycles = x;
+    });
+    cycleitService.getModel(1).subscribe(x => {
       this.models = x;
     });
   }
 
   ngOnInit() {
   }
-  searchChanged() {
+
+  push_submit() {
     // Call our service function which returns an Observable
-    this.results = this.cycleitService.getProfile(1);
-    this.results.subscribe((profile) => {
-      console.log(profile)
+    this.cycleitService.createRepairCase(new RepairCase({
+      "defect":this.defect,
+      "bicycleConfig": 1,
+      "user":1,
+    })).subscribe(x =>{
+      
+      
+      console.log("test")
     });
+
   }
 }

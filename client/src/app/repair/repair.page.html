@@ -16,15 +16,11 @@
       </ion-item>
     
       <ion-item>
-        <ion-label>Modell</ion-label>
-        <ion-select placeholder="Select One">
-          <ion-item *ngFor="let currentModel of models;">
-            <ion-select-option value="1">
-              {{currentModel.Name}}
-            </ion-select-option>
-          </ion-item>
-        </ion-select>
+        <ion-label>Defekt</ion-label>
+        <ion-input type="text" [(ngModel)]="defect"></ion-input>
       </ion-item>
+      <button ion-button (click)="push_submit($event)">Submit</button>
+
     </div>
   </ion-list>
 </ion-content>
