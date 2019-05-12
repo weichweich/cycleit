@@ -112,6 +112,9 @@ export class CycleitService {
     let frames = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getFrame(bike["frame"])))));
     let brakes = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getBrake(bike["breaks"])))));
     let bicycle_models = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getModel(bike["model"])))));
+    let chain_name = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getModel(bike["chain_name"])))));
+    let handlebar_name = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getModel(bike["handlebar_name"])))));
+    let fork_name = bikes.pipe(mergeMap(bks => forkJoin(bks.map(bike => this.getModel(bike["fork_name"])))));
 
     return forkJoin(bikes, wheels, frames, brakes, bicycle_models).map(results => {
       return results[0].map((result, i) => {

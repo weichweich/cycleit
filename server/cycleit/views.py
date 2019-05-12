@@ -4,12 +4,12 @@ from rest_framework import generics
 from rest_framework.renderers import JSONRenderer
 
 from cycleit.models import (BicycleConfiguration, BicycleModel, Breaks, Frame,
-                            GroupSet, Manufactures, User, Wheel, RepairCase, RepairShop)
+                            Manufactures, RepairCase, RepairShop, User, Wheel)
 from cycleit.serializers import (BicycleConfigurationSerializer,
                                  BicycleModelSerializer, BreaksSerializer,
-                                 FrameSerializer, GroupSetSerializer,
-                                 ManufacturesSerializer, UserSerializer,
-                                 WheelSerializer, RepairCaseSerializer, RepairShopSerializer)
+                                 FrameSerializer, ManufacturesSerializer,
+                                 RepairCaseSerializer, RepairShopSerializer,
+                                 UserSerializer, WheelSerializer)
 
 # Manufactures
 
