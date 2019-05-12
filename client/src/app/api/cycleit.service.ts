@@ -24,6 +24,7 @@ import { Wheel } from '../model/wheels';
 import { RepairShop } from '../model/repair_shop';
 import { forkJoin } from 'rxjs';
 import { map } from 'rxjs-compat/operator/map';
+import { RepairCase } from '../model/repair-case';
 
 @Injectable({
   providedIn: 'root'
@@ -134,4 +135,22 @@ export class CycleitService {
         return new Profile(user);
       })
   }
+
+  public createRepairCase(repair_case: RepairCase) {
+    return this.httpClient.post(this.baseUrl + '/RepairCaseList/', {
+      "bicycleConfig": repair_case.bicycleConfig,
+      "defect": repair_case.defect,
+      "price": repair_case.price,
+      "repair_shop": repair_case.repair_shop,
+    })
+  }
+
+  public getRepairCases(user_id: number): Observable<RepairCase[]> {
+    return this.httpClient.get<RepairCase[]>(this.baseUrl + '/RepairCaseList/?user=' + user_id)
+               .map(repair_cases => {return repair_cases.map(
+                 repair_case => new RepairCase(repair_case)
+                )}
+              );
+  }
+
 }

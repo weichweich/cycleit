@@ -52,6 +52,7 @@ class RepairShop(models.Model):
 
 
 class RepairCase(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     bicycleConfig = models.ForeignKey(BicycleConfiguration, on_delete=models.CASCADE)
     defect = models.CharField(max_length=200)
     price = models.IntegerField(null=True)
