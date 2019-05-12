@@ -84,6 +84,13 @@ export class CycleitService {
       .map(bicycleModel => new BicycleModel(bicycleModel));
   }
 
+  public getModels(): Observable<BicycleModel[]> {
+    return this.httpClient.get<BicycleModel[]>(this.baseUrl + '/BicycleModelList')
+      .map(bicycleModels => bicycleModels.map(
+        bicycleModel => new BicycleModel(bicycleModel))
+      );
+  }
+
   public getBrake(id): Observable<Break> {
     return this.httpClient
       .get<Break>(this.baseUrl + '/BreaksDetail/' + id)
