@@ -34,14 +34,14 @@ export class RepairPage implements OnInit {
   ngOnInit() {
   }
 
-  choose_workstation(shop:RepairShop) {
+  choose_workstation(shop: RepairShop) {
     this.cycleitService.createRepairCase(new RepairCase({
-        "defect":this.defect,
-        "bicycleConfig": 1,
-        "user":1,
-        "repairShop":shop.id,
-        
-      })).subscribe(x =>{
+      "defect": this.defect,
+      "bicycleConfig": 1,
+      "user": 1,
+      "repairShop": shop.id,
+      "price": 20,
+    })).subscribe(x => {
 
             console.log("Submitted");
       }
@@ -60,11 +60,11 @@ export class RepairPage implements OnInit {
     await alert.present();
   }
   push_submit() {
-        this.cycleitService.getRepairShops().subscribe( x =>{
-          this.shops = x;
-          console.log("Shops arrived");
-        }
-        )
+    this.cycleitService.getRepairShops().subscribe(x => {
+      this.shops = x;
+      console.log("Shops arrived");
+    }
+    )
     // Call our service function which returns an Observable
     // this.cycleitService.createRepairCase(new RepairCase({
     //   "defect":this.defect,
