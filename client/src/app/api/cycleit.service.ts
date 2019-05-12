@@ -25,6 +25,7 @@ import { RepairShop } from '../model/repair_shop';
 import { forkJoin } from 'rxjs';
 import { map } from 'rxjs-compat/operator/map';
 import { RepairCase } from '../model/repair-case';
+import { removeSummaryDuplicates } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -132,7 +133,7 @@ export class CycleitService {
           "modelYear": "test",
           "modelManufacturer": "test",
           "frameName": results[2][i].name,
-          "breaksName": results[3][i].name,
+          "brakeName": results[3][i].name,
           "chainName": results[5][i].name,
           "forkName": results[7][i].name,
           "handlebarName": results[6][i].name,  
@@ -154,12 +155,12 @@ export class CycleitService {
     return forkJoin(bike, wheels, frames, brakes, bicycle_models, chain_name, handlebar_name, fork_name).map(results => {
       return new Bicycle({
         "wheelName": results[1].name,
-        "id": results[0]["id"],
+        "id": removeSummaryDuplicates[0]["id"],
         "modelName": results[4].name,
         "modelYear": "test",
         "modelManufacturer": "test",
         "frameName": results[2].name,
-        "breaksName": results[3].name,
+        "brakeName": results[3].name,
         "chainName": results[5].name,
         "forkName": results[7].name,
         "handlebarName": results[6].name,
