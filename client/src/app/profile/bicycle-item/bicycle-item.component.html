@@ -1,15 +1,17 @@
 <ion-grid>
   <ion-row>
+    
     <ion-toolbar>
+      
       <ion-item lines="none">
         <ion-icon slot="start" color="medium" name="bicycle"></ion-icon>
         <ion-label>{{bicycle.modelName}}</ion-label>
-      </ion-item>
-      <ion-buttons slot="primary">
-        <ion-button routerLink="/detail/{{bicycle.id}}">
+      <ion-buttons slot="end">
+        <ion-button slot="end" routerLink="/detail/{{bicycle.id}}">
           <ion-icon slot="icon-only" name="create"></ion-icon>
         </ion-button>
       </ion-buttons>
+    </ion-item>
     </ion-toolbar>
   </ion-row>
 
