@@ -4,12 +4,12 @@ from rest_framework import generics
 from rest_framework.renderers import JSONRenderer
 
 from cycleit.models import (BicycleConfiguration, BicycleModel, Breaks, Frame,
-                            GroupSet, Manufactures, User, Wheel)
+                            GroupSet, Manufactures, User, Wheel, RepairCase, RepairShop)
 from cycleit.serializers import (BicycleConfigurationSerializer,
                                  BicycleModelSerializer, BreaksSerializer,
                                  FrameSerializer, GroupSetSerializer,
                                  ManufacturesSerializer, UserSerializer,
-                                 WheelSerializer)
+                                 WheelSerializer, RepairCaseSerializer, RepairShopSerializer)
 
 # Manufactures
 
@@ -124,3 +124,33 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     renderer_classes = (JSONRenderer, )
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+# RepairCase
+
+class RepairCaseList(generics.ListCreateAPIView):
+    filterset_fields = ('id', )
+    renderer_classes = (JSONRenderer, )
+    queryset = RepairCase.objects.all()
+    serializer_class = RepairCaseSerializer
+
+
+class RepairCaseDetail(generics.RetrieveUpdateDestroyAPIView):
+    filterset_fields = ('id', )
+    renderer_classes = (JSONRenderer, )
+    queryset = RepairCase.objects.all()
+    serializer_class = RepairCaseSerializer
+
+# RepairShop
+
+class RepairShopList(generics.ListCreateAPIView):
+    filterset_fields = ('id', )
+    renderer_classes = (JSONRenderer, )
+    queryset = RepairShop.objects.all()
+    serializer_class = RepairShopSerializer
+
+
+class RepairShopDetail(generics.RetrieveUpdateDestroyAPIView):
+    filterset_fields = ('id', )
+    renderer_classes = (JSONRenderer, )
+    queryset = RepairShop.objects.all()
+    serializer_class = RepairShopSerializer
