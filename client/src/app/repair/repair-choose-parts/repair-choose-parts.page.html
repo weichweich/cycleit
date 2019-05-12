@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{bicycle.modelName}}</ion-title>
+    <ion-title *ngIf="bicycle">{{bicycle.modelName}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,5 +8,11 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-item>
+    <ion-input name="defect" placeholder="Describe your problem" type="text" [(ngModel)]="defect"></ion-input>
+  </ion-item>
 </ion-content>
+
+<ion-footer>
+  <ion-button expand="full" (click)="push_submit($event)" color="secondary">Submit</ion-button>
+</ion-footer>

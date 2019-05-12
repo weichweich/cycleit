@@ -22,7 +22,6 @@ export class RepairPage implements OnInit {
 
   results: Observable<any>;
   constructor(private cycleitService: CycleitService, public alertController: AlertController) {
-    this.bicycles = HansPeterProfile.bikes;
     cycleitService.getBicycleByUserId(1).subscribe(x => {
       this.bicycles = x;
     });
@@ -43,11 +42,11 @@ export class RepairPage implements OnInit {
       "price": 20,
     })).subscribe(x => {
 
-            console.log("Submitted");
-      }
-      );
-      this.presentAlert(shop);
-      this.shops = []
+      console.log("Submitted");
+    }
+    );
+    this.presentAlert(shop);
+    this.shops = []
 
   }
   async presentAlert(shop) {
@@ -58,27 +57,5 @@ export class RepairPage implements OnInit {
     });
 
     await alert.present();
-  }
-  push_submit() {
-    this.cycleitService.getRepairShops().subscribe(x => {
-      this.shops = x;
-      console.log("Shops arrived");
-    }
-    )
-    // Call our service function which returns an Observable
-    // this.cycleitService.createRepairCase(new RepairCase({
-    //   "defect":this.defect,
-    //   "bicycleConfig": 1,
-    //   "user":1,
-    // })).subscribe(x =>{
-    //     this.cycleitService.getRepairShops().subscribe( x =>{
-    //       this.shops = x;
-    //       console.log("Shops arrived");
-    //     }
-    //     )
-
-    //   console.log("test")
-    // });
-
   }
 }

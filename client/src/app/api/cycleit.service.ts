@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
-import {of} from 'rxjs'
+import { of } from 'rxjs'
 import 'rxjs/add/operator/catch';
 import {
   mergeAll,
@@ -138,6 +138,32 @@ export class CycleitService {
     });
   }
 
+  public getBicycleById(id): Observable<Bicycle> {
+    let bike = this.httpClient.get<any[]>(this.baseUrl + '/BicycleConfigurationDetail/' + id);
+    let wheels = bike.pipe(mergeMap(bike => this.getWheel(bike["wheel"])));
+    let frames = bike.pipe(mergeMap(bike => this.getFrame(bike["frame"])));
+    let brakes = bike.pipe(mergeMap(bike => this.getBrake(bike["breaks"])));
+    let bicycle_models = bike.pipe(mergeMap(bike => this.getModel(bike["model"])));
+    let chain_name = bike.pipe(mergeMap(bike => this.getModel(bike["chain_name"])));
+    let handlebar_name = bike.pipe(mergeMap(bike => this.getModel(bike["handlebar_name"])));
+    let fork_name = bike.pipe(mergeMap(bike => this.getModel(bike["fork_name"])));
+
+    return forkJoin(bike, wheels, frames, brakes, bicycle_models, chain_name, handlebar_name, fork_name).map(results => {
+      return new Bicycle({
+        "wheelName": results[1].name,
+        "id": results[0]["id"],
+        "modelName": results[4].name,
+        "modelYear": "test",
+        "modelManufacturer": "test",
+        "frameName": results[2].name,
+        "breaksName": results[3].name,
+        "chainName": results[5].name,
+        "forkName": results[7].name,
+        "handlebarName": results[6].name,
+      });
+    });
+  }
+
   public getProfile(id): Observable<Profile> {
     return this.httpClient
       .get<Profile[]>(this.baseUrl + '/UserDetail/' + id)
@@ -160,14 +186,14 @@ export class CycleitService {
     let cases = this.httpClient.get<any[]>(this.baseUrl + '/RepairCaseList/?user=' + user);
     let shops = cases.pipe(mergeMap(cs => forkJoin(cs.map(cas => {
       if (cas["repair_shop"] == null) {
-        return of({"name": "NA"})
+        return of({ "name": "NA" })
       }
       return this.getRepairShop(cas["repair_shop"])
     }))));
 
     return forkJoin(cases, shops).map(results => {
       return results[0].map((result, i) => {
-        let rc =  new RepairCase({
+        let rc = new RepairCase({
           "id": results[0][i].id,
           "bicycleConfig": results[0][i].bicycleConfig,
           "defect": results[0][i].defect,
